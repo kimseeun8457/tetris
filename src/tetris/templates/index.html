@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c101b">
+  <title>BLOCK / FALL — Tetris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/game.js') }}" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#home" aria-label="Block Fall home"><span class="mark">▦</span> BLOCK<span class="wordmark-light">/</span>FALL</a>
+      <div class="top-meta"><span class="live-dot"></span> ARCADE SYSTEM <span class="meta-divider">/</span> NO. 001</div>
+      <button class="sound-button" id="sound-toggle" type="button" aria-pressed="false"><span class="sound-icon">◖</span><span id="sound-label">SOUND OFF</span></button>
+    </header>
+
+    <section class="game-layout" aria-label="Tetris game">
+      <aside class="left-rail">
+        <div class="eyebrow"><span>01</span> YOUR RUN</div>
+        <div class="score-block"><span class="stat-label">SCORE</span><strong class="score-value" id="score">000000</strong></div>
+        <div class="stat-grid">
+          <div class="small-stat"><span class="stat-label">LEVEL</span><strong id="level">01</strong></div>
+          <div class="small-stat"><span class="stat-label">LINES</span><strong id="lines">00</strong></div>
+        </div>
+        <div class="best-card"><div class="best-head"><span>PERSONAL BEST</span><span class="best-star">✳</span></div><strong id="best-score">000000</strong><span class="best-foot">THIS DEVICE</span></div>
+        <div class="controls-card"><div class="eyebrow"><span>02</span> CONTROLS</div>
+          <div class="control-row"><span class="key-pair"><kbd>←</kbd><kbd>→</kbd></span><span>MOVE</span></div>
+          <div class="control-row"><span class="key-pair"><kbd>A</kbd><kbd>D</kbd></span><span>MOVE</span></div>
+          <div class="control-row"><span class="key-pair"><kbd>↑</kbd> <kbd>W</kbd></span><span>ROTATE</span></div>
+          <div class="control-row"><span class="key-pair"><kbd>↓</kbd> <kbd>S</kbd></span><span>SOFT DROP</span></div>
+          <div class="control-row"><span class="key-pair"><kbd class="space-key">SPACE</kbd></span><span>HARD DROP</span></div>
+          <div class="control-row"><span class="key-pair"><kbd>P</kbd> <kbd>ESC</kbd></span><span>PAUSE</span></div>
+        </div>
+      </aside>
+
+      <section class="board-column" aria-label="Playfield">
+        <div class="board-topline"><span><i></i> LIVE FIELD</span><span>10 × 20</span></div>
+        <div class="board-frame">
+          <canvas id="game-board" width="300" height="600" aria-label="Tetris playfield"></canvas>
+          <div class="screen-overlay" id="screen-overlay">
+            <div class="overlay-content" id="overlay-content"></div>
+          </div>
+        </div>
+        <div class="board-footer"><span><span class="footer-key">●</span> 7-BLOCK ROTATION</span><span>EST. 1984 <b>✳</b></span></div>
+      </section>
+
+      <aside class="right-rail">
+        <div class="eyebrow"><span>03</span> UP NEXT</div>
+        <div class="next-card"><div class="next-header"><span>NEXT BLOCK</span><span class="next-index">#<span id="piece-count">01</span></span></div><canvas id="next-board" width="160" height="144" aria-label="Next piece preview"></canvas></div>
+        <div class="quote-card"><span class="quote-mark">“</span><p>One more line.<br>One more run.</p><span class="quote-tag">THE CLASSIC NEVER ENDS</span></div>
+        <div class="tip-card"><span class="tip-icon">↗</span><div><strong>QUICK TIP</strong><p>Hard drop to lock<br>pieces instantly.</p></div></div>
+      </aside>
+    </section>
+
+    <footer class="page-footer"><span>DESIGNED FOR THE LONG RUN <b>✳</b></span><span>TAKE A BREATH. THEN DROP IN.</span></footer>
+  </main>
+</body>
+</html>
